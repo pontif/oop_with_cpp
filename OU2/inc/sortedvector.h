@@ -1,0 +1,5 @@
+#ifndef SORTEDVECTOR_H
+#define SORTEDVECTOR_H
+
+
+#endif //SORTEDVECTOR_H

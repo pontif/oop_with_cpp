@@ -19,4 +19,4 @@ private:
 	Vertex *vertices;
 	int nVertices;
 };
-#endif
+#endif //POLYGON_H
