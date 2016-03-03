@@ -8,13 +8,18 @@ using namespace std;
 template <class T, int size> class SortedVector
 {
 public:
-  template <class T, int size> SortedVector<T,size>::SortecVector() : 
+  template <class T, int size> SortedVector<T, size>::SortecVector() : 
     size(size) {}
-  ~SortedVector();
-  bool add(const T& v);
-  T& median();
-  void removeLarger(const T& v);
-  void print(ostream &os);
+    
+  template <class T, int size> SortedVector<T, size>::~SortedVector()
+  {
+    delete[] vec;
+  }
+  
+//  bool add(const T& v);
+//  T& median();
+//  void removeLarger(const T& v);
+//  void print(ostream &os);
 private:
   int size;
   T vec[size];
