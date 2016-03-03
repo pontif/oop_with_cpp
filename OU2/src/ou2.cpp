@@ -5,10 +5,10 @@ using namespace std;
 
 int main()
 {
-/*
+
   SortedVector<Polygon,10> polygons;
   SortedVector<int,6> ints;
-
+/*
   ints.add( 3 );  
   ints.add( 1 );  
   ints.add( 6 );
