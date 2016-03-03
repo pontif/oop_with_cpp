@@ -1,0 +1,19 @@
+Klassen Polygonmåste förses med kopieringskonstruktor och tilldelningsoperator - vid inläggning av nya instanser i vektorn sker en mängd tilldelningar när elementen flyttas i vektorn!
+
+Metoden add() skall returnera falskt om vektorn är full. Om vektorn innehåller ett jämnt antal element kan median() få returnera det första av de två elementen i mitten. Metoderna kräver att några operatorer till Polygonskrivs.
+
+I denna uppgift skall du skapa en template-klass SortedVector som skall kunna lagra instanser av valfri klass (eller variabler av de i C++ inbyggda typerna). Du skall också komplettera klassen Polygon från inlämningsuppgift 1 så att den kan lagras i den sorterade vektorn - sortera polygonerna efter ytstorlek. Klassen SortedVectorska ha minst följande metoder:
+SortedVector() // konstruktor
+bool add ( const T& v ) // lägg till ett element
+T& median () // returnerar elementet i mitten av vektorn
+void removeLarger( const T& v ) // ta bort alla element större än v
+void print( ostream &os ) // skriv ut alla element i vektorn
+
+Vektorn skall inte lagra pekare till objekt utan själva objekten och storleken på vektorn skall vara en template-parameter, d.v.s. deklarationen skall se ut så här:
+template <class T, int size> class SortedVector
+{
+   T vec[size];
+  .
+  .
+  .
+}
