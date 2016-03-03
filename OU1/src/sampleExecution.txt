@@ -1,0 +1,14 @@
+[oop_with_cpp/OU1/src] => make
+g++ ou1.cpp polygon.cpp vertex.cpp -o ou1.out
+
+[oop_with_cpp/OU1/src] => ou1.out
+num:  4
+yta:  36
+minx: 0
+maxx: 6
+miny: 0
+maxy: 6
+num:  5
+yta:  39
+minx: -1
+triangelyta: 4.5
