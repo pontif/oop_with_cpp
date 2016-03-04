@@ -6,4 +6,4 @@
 #all: ${OBJECTS)
 #	$(CC) $(CFLAGS) -o $(EXEC) $(OBJECTS)
 all:
-	g++ -Wall ou2.cpp polygon.cpp vertex.cpp sortedvector.cpp -o ou2.out
+	g++ -Wall ou2.cpp polygon.cpp vertex.cpp -o ou2.out

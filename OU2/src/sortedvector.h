@@ -5,19 +5,26 @@
 
 using namespace std;
 
-template <class T, int size> class SortedVector
+template <class T, int sz> class SortedVector
 {
 public:
-  template <class T, int size> SortedVector<T,size>::SortecVector() : 
-    size(size) {}
+  SortedVector();
   ~SortedVector();
-  bool add(const T& v);
-  T& median();
-  void removeLarger(const T& v);
-  void print(ostream &os);
+//  bool add(const T& v);
+//  T& median();
+//  void removeLarger(const T& v);
+//  void print(ostream &os);
 private:
   int size;
-  T vec[size];
+  T vec[sz];
+};
+
+template <class T, int sz> SortedVector<T, sz>::SortedVector() : 
+  size(sz) { vec = new T[sz]; }
+
+template<class T, int sz> SortedVector<T, sz>::~SortedVector()
+{
+  delete[] vec;
 }
 
 #endif //SORTEDVECTOR_H
