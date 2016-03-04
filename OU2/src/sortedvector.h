@@ -20,11 +20,8 @@ private:
 };
 
 template <class T, int sz> SortedVector<T, sz>::SortedVector() : 
-  size(sz) { vec = new T[sz]; }
+  size(sz) {}
 
-template<class T, int sz> SortedVector<T, sz>::~SortedVector()
-{
-  delete[] vec;
-}
+template<class T, int sz> SortedVector<T, sz>::~SortedVector() {}
 
 #endif //SORTEDVECTOR_H
