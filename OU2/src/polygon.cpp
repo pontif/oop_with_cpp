@@ -11,6 +11,16 @@ Polygon::Polygon(void)
 //cout << "Creating Polygon at " << this << " with " << this->nVertices << " vertices" << endl;
 }
 
+Polygon::Polygon(const Polygon &p)
+{
+  nVertices = p.nVertices;
+  vertices = new Vertex[nVertices];
+  for (int i = 0; i < nVertices; i++)
+  {
+    vertices[i] = p.vertices[i];
+  }
+}
+
 Polygon::Polygon(Vertex *vertices, int nVertices)
 {
   this->nVertices = nVertices;
@@ -52,9 +62,9 @@ void Polygon::add(Vertex v)
   vertices = newV;
 }
 
-int Polygon::numVertices() { return nVertices; }
+int Polygon::numVertices() const { return nVertices; }
 
-double Polygon::area()
+double Polygon::area() const
 {
   // sum x(i)*y(i+1) - x(i+1)*y(i) for all neighbouring vertices.
   // Start out with last and first vertices, to handle the wrap-around case,
@@ -73,7 +83,7 @@ double Polygon::area()
   else { return -area / 2; }
 }
 
-double Polygon::maxx()
+double Polygon::maxx() const
 {
   // Loop over all vertices to find the extreme value
   double maxX = vertices[0].getX();
@@ -87,7 +97,7 @@ double Polygon::maxx()
   return maxX;
 }
 
-double Polygon::minx()
+double Polygon::minx() const
 {
   // Loop over all vertices to find the extreme value
   double minX = vertices[0].getX();
@@ -101,7 +111,7 @@ double Polygon::minx()
   return minX;
 }
 
-double Polygon::maxy()
+double Polygon::maxy() const
 {
   // Loop over all vertices to find the extreme value
   double maxY = vertices[0].getY();
@@ -115,7 +125,7 @@ double Polygon::maxy()
   return maxY;
 }
 
-double Polygon::miny()
+double Polygon::miny() const
 {
   // Loop over all vertices to find the extreme value
   double minY = vertices[0].getY();
@@ -128,3 +138,42 @@ double Polygon::miny()
   }
   return minY;
 }
+
+const Polygon & Polygon::operator=(const Polygon &p)
+{
+  if (this != &p)
+  {
+    nVertices = p.nVertices;
+    delete[] vertices;
+    vertices = new Vertex[nVertices];
+    for (int i = 0; i < nVertices; i++)
+    {
+      vertices[i] = p.vertices[i];
+    }
+  }
+  return *this;
+}
+
+bool Polygon::operator>=(Polygon &p) const
+{
+  bool geq = false;
+  if (p.area() <= area()) { geq = true; }
+  return geq;
+}
+
+bool Polygon::operator<(Polygon &p) const
+{
+  return !(*this >= p);
+}
+
+ostream & operator << (ostream &os, const Polygon &p)
+{
+  os << "{";
+  for (int i = 0; i < p.nVertices; i++)
+  {
+    os << p.vertices[i] << " ";
+  }
+  os << "}";
+  return os;
+}
+

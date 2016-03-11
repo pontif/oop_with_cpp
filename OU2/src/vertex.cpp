@@ -31,12 +31,19 @@ Vertex::~Vertex()
 }
 
 // Getters/setters
-double Vertex::getX()
+double Vertex::getX() const
 {
 	return x;
 }
 
-double Vertex::getY()
+double Vertex::getY() const
 {
 	return y;
 }
+
+ostream & operator<<(ostream &os, const Vertex &v)
+{
+  os << "(" << v.x << "," << v.y << ")";
+  return os;
+}
+
