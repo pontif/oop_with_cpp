@@ -69,7 +69,7 @@ double Polygon::area() const
   // sum x(i)*y(i+1) - x(i+1)*y(i) for all neighbouring vertices.
   // Start out with last and first vertices, to handle the wrap-around case,
   // and then loop over all remaining vertex pairs.
-  Vertex *v1 = &vertices[nVertices];
+  Vertex *v1 = &vertices[nVertices - 1];
   Vertex *v2 = &vertices[0];
   double area = 0;
   for (int i = 0; i < nVertices; i++)

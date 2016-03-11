@@ -12,7 +12,6 @@ int main()
   ints.add( 3 );
   ints.add( 1 );
   ints.add( 6 );
-
   Vertex varr[10];
   varr[0] = Vertex(0,0); 
   varr[1] = Vertex(10,0);
