@@ -2,15 +2,23 @@
 #define VERTEX_H
 class Vertex {
 public:
-	Vertex();
-	Vertex(Vertex *v);
-	Vertex(double x, double y);
-	~Vertex();
-	double getX() const;
-	double getY() const;
-        friend ostream & operator<<(ostream &os, const Vertex &v);
+  // Constructors (trivial destructor)
+  Vertex() : x(0), y(0) {}
+  Vertex(Vertex *v) : x(v->x), y(v->y) {}
+  Vertex(double x, double y) : x(x), y(y) {}
+
+  // Getters/setters for position
+  double getX() const { return x; };
+  double getY() const { return y; };
+
+  // Output operator, returning "(x,y)"
+  friend ostream & operator<<(ostream &os, const Vertex &v)
+    {return (os << "(" << v.x << "," << v.y << ")");}
+
 private:
-	double x;
-	double y;
+  // Position parameters
+  double x;
+  double y;
 };
-#endif
+
+#endif //VERTEX_H

@@ -3,14 +3,6 @@ using namespace std;
 
 #include "polygon.h"
 
-// Default constructor
-Polygon::Polygon(void)
-{
-  vertices = NULL;
-  nVertices = 0;
-//cout << "Creating Polygon at " << this << " with " << this->nVertices << " vertices" << endl;
-}
-
 Polygon::Polygon(const Polygon &p)
 {
   nVertices = p.nVertices;
@@ -24,20 +16,20 @@ Polygon::Polygon(const Polygon &p)
 Polygon::Polygon(Vertex *vertices, int nVertices)
 {
   this->nVertices = nVertices;
+
   // Allocate memory for vertices in the new polygon
   this->vertices = new Vertex[nVertices];
+
   // Copy all members of array of vertices to new polygon
   for (int i = 0; i < nVertices; i++)
   {
     this->vertices[i] = vertices[i];
   }
-//	cout << "Creating Polygon at " << this << " with " << this->nVertices << " vertices" << endl;
 }
 
 // Destructor. Deallocates array of vertices.
 Polygon::~Polygon()
 {
-//	cout << "Destroying Polygon at " << this << " with " << this->nVertices << " vertices" << endl;
   if (vertices != NULL) { delete[] vertices; }
 }
 
@@ -141,8 +133,9 @@ double Polygon::miny() const
 
 const Polygon & Polygon::operator=(const Polygon &p)
 {
-  if (this != &p)
+  if (this != &p) // Allow for self-assignment
   {
+    // Delete old polygon and create new one identical to p
     nVertices = p.nVertices;
     delete[] vertices;
     vertices = new Vertex[nVertices];
@@ -154,11 +147,10 @@ const Polygon & Polygon::operator=(const Polygon &p)
   return *this;
 }
 
+// Comparison operators
 bool Polygon::operator>=(Polygon &p) const
 {
-  bool geq = false;
-  if (p.area() <= area()) { geq = true; }
-  return geq;
+  return (p.area() <= area() ? true : false);
 }
 
 bool Polygon::operator<(Polygon &p) const
@@ -166,6 +158,7 @@ bool Polygon::operator<(Polygon &p) const
   return !(*this >= p);
 }
 
+// Output operator, returning "{(x1, y1) (x2, y2) ... (xn yn) }"
 ostream & operator << (ostream &os, const Polygon &p)
 {
   os << "{";

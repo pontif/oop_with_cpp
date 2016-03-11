@@ -4,30 +4,38 @@
 
 class Polygon {
 public:
-	Polygon(void);
-        Polygon(const Polygon &p);
-	Polygon(Vertex *vertices, int nVertices);
-	~Polygon();
+  // Constructors and destructor
+  Polygon(void) : vertices(NULL), nVertices(0) {}
+  Polygon(const Polygon &p);
+  Polygon(Vertex *vertices, int nVertices);
+  ~Polygon();
+  
+  // Adds a vertex to the end of the array.
+  void add(Vertex v);
 
-        // Adds a vertex to the end of the array.
-	void add(Vertex v);
-	double area() const;
-	double minx() const;
-	double maxx() const;
-	double miny() const;
-	double maxy() const;
-	int numVertices() const;
+  // Information getters
+  double area() const;
+  double minx() const;
+  double maxx() const;
+  double miny() const;
+  double maxy() const;
+  int numVertices() const;
+  
+  // Assignment operator
+  const Polygon & operator=(const Polygon &p);
+  
+  // Comparison operators (NOTE not a full set)
+  bool operator>=(Polygon &p) const;
+  bool operator<(Polygon &p) const;
 
-        const Polygon & operator=(const Polygon &p);
+  // Output operator
+  friend ostream & operator<<(ostream &os, const Polygon &p);
 
-        bool operator>=(Polygon &p) const;
-        bool operator<(Polygon &p) const;
-
-        friend ostream & operator<<(ostream &os, const Polygon &p);
 private:
-        // Array of vertices. NULL if polygon vertexless.
-	Vertex *vertices;
-        // Number of vertices in polygon.
-	int nVertices;
+  // Array of vertices. NULL if polygon vertexless.
+  Vertex *vertices;
+  // Number of vertices in polygon.
+  int nVertices;
 };
+
 #endif //POLYGON_H
