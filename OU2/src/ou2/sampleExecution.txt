@@ -1,0 +1,17 @@
+[oop_with_cpp/OU2/src] => make
+g++ -Wall -g ou2.cpp polygon.cpp -o ou2.out
+
+[oop_with_cpp/OU2/src] => ou2.out
+17.5
+247.5
+33.5
+  {(0,0) (10,0) (5,2) (5,5) }
+  {(0,0) (5,0) (5,3) (4,8) (2,10) }
+  {(0,0) (25,8) (10,23) }
+  1
+  3
+  6
+MEDIAN: 3
+MEDIAN: {(0,0) (5,0) (5,3) (4,8) (2,10) }
+MEDIAN: 2
+[oop_with_cpp/OU2/src] =>
